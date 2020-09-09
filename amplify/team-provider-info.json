@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-collabowrimo-dev-204755-authRole",
+      "UnauthRoleArn": "arn:aws:iam::998711510845:role/amplify-collabowrimo-dev-204755-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::998711510845:role/amplify-collabowrimo-dev-204755-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-collabowrimo-dev-204755-deployment",
+      "UnauthRoleName": "amplify-collabowrimo-dev-204755-unauthRole",
+      "StackName": "amplify-collabowrimo-dev-204755",
+      "StackId": "arn:aws:cloudformation:us-east-1:998711510845:stack/amplify-collabowrimo-dev-204755/1a8019a0-f236-11ea-8a6d-1277ff2044b7",
+      "AmplifyAppId": "daykytlgzdawh"
+    }
+  }
+}
