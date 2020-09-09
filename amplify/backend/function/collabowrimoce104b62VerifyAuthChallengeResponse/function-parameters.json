@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "captcha-verify"
+  ],
+  "parentResource": "collabowrimoce104b62",
+  "functionName": "collabowrimoce104b62VerifyAuthChallengeResponse",
+  "resourceName": "collabowrimoce104b62VerifyAuthChallengeResponse",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/home/ben/.nvm/versions/node/v14.4.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/VerifyAuthChallengeResponse",
+  "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
+  "roleName": "collabowrimoce104b62VerifyAuthChallengeResponse",
+  "skipEdit": true,
+  "RECAPTCHASECRET": ""
+}

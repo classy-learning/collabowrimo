@@ -10,6 +10,23 @@
       "StackName": "amplify-collabowrimo-dev-204755",
       "StackId": "arn:aws:cloudformation:us-east-1:998711510845:stack/amplify-collabowrimo-dev-204755/1a8019a0-f236-11ea-8a6d-1277ff2044b7",
       "AmplifyAppId": "daykytlgzdawh"
+    },
+    "categories": {
+      "function": {
+        "collabowrimoce104b62DefineAuthChallenge": {},
+        "collabowrimoce104b62CreateAuthChallenge": {},
+        "collabowrimoce104b62VerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": ""
+        },
+        "collabowrimoce104b62CustomMessage": {
+          "REDIRECTURL": "https://collabowrimo.net",
+          "EMAILSUBJECT": "Account Confirmation",
+          "EMAILMESSAGE": "Thanks for signing up! Please click the link to confirm your account"
+        }
+      },
+      "auth": {
+        "collabowrimoce104b62": {}
+      }
     }
   }
 }
