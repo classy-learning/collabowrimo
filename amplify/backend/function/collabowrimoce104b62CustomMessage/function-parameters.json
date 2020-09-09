@@ -7,12 +7,7 @@
   "functionName": "collabowrimoce104b62CustomMessage",
   "resourceName": "collabowrimoce104b62CustomMessage",
   "parentStack": "auth",
-  "triggerEnvs": [
-    {
-      "key": "RESOURCENAME",
-      "value": "resourceName"
-    }
-  ],
+  "triggerEnvs": "[\n  {\n    \"key\": \"RESOURCENAME\",\n    \"value\": \"resourceName\"\n  }\n]",
   "triggerDir": "/home/ben/.nvm/versions/node/v14.4.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CustomMessage",
   "triggerTemplate": "CustomMessage.json.ejs",
   "roleName": "collabowrimoce104b62CustomMessage",
@@ -20,5 +15,6 @@
   "REDIRECTURL": "https://collabowrimo.net",
   "EMAILSUBJECT": "Account Confirmation",
   "EMAILMESSAGE": "Thanks for signing up! Please click the link to confirm your account",
-  "RESOURCENAME": "resourceName"
+  "RESOURCENAME": "resourceName",
+  "triggerEventPath": "CustomMessage.event.json"
 }

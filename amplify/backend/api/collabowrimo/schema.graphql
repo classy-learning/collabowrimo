@@ -1,7 +1,7 @@
 type Clause
   @auth(
     rules: [
-      { allow: groups, groups: ["Admin"] }
+      { allow: groups, groups: ["Admin"], operations: [delete] }
       { allow: owner, operations: [create, update] }
       { allow: private, operations: [read] }
     ]

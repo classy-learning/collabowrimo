@@ -7,9 +7,10 @@
   "functionName": "collabowrimoce104b62CreateAuthChallenge",
   "resourceName": "collabowrimoce104b62CreateAuthChallenge",
   "parentStack": "auth",
-  "triggerEnvs": [],
+  "triggerEnvs": "[]",
   "triggerDir": "/home/ben/.nvm/versions/node/v14.4.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CreateAuthChallenge",
   "triggerTemplate": "CreateAuthChallenge.json.ejs",
   "roleName": "collabowrimoce104b62CreateAuthChallenge",
-  "skipEdit": true
+  "skipEdit": true,
+  "triggerEventPath": "CreateAuthChallenge.event.json"
 }
