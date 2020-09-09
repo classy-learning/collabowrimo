@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
-
 import PropTypes from "prop-types";
+import React from "react";
+import { Segment } from "semantic-ui-react";
 
 const Clause = (props) => {
-  const [clause, setClause] = useState();
-  useEffect(() => {
-    async function fetchClause(id) {
-      // TODO: fetch clause from api using id
-      setClause(id);
-    }
-    fetchClause(props.id);
-  }, [props.id]);
-  return <p>{clause}</p>;
+  return <p>{props.text}</p>;
 };
 
 Clause.propTypes = {
   id: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Clause;

@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 
+import { API } from "aws-amplify";
 import Clause from "bits/Clause";
 import PropTypes from "prop-types";
+import { clausesByParentId } from "graphql/queries";
 
 const Swipe = (props) => {
-  const [clauseIds, setClauseIds] = useState([]);
+  const [clauses, setClauses] = useState([]);
   useEffect(() => {
-    async function fetchClauseIds(parentId) {
-      // TODO: get clause ids from api using parentid
-      setClauseIds([parentId]);
+    async function fetchClauses(parentId) {
+      const results = await API.graphql({
+        query: clausesByParentId,
+        variables: { parentId: parentId },
+      });
+      setClauses(results.data.clausesByParentId.items);
     }
-    fetchClauseIds(props.parentId);
+    fetchClauses(props.parentId);
   }, [props.parentId]);
   // TODO: wrap clauses and newClauseForm in react-swipeable-views
-  return clauseIds.map((clauseId) => (
-    <Clause id={clauseId} key={clauseId}></Clause>
-  ));
+  return clauses.map((clause) => <Clause {...clause} key={clause.id}></Clause>);
 };
 
 Swipe.propTypes = {
