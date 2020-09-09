@@ -1,0 +1,18 @@
+type Clause
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admin"] }
+      { allow: owner, operations: [create, update] }
+      { allow: private, operations: [read] }
+    ]
+  )
+  @key(
+    name: "byParentId"
+    fields: ["parentId"]
+    queryField: "clausesByParentId"
+  )
+  @model {
+  id: ID!
+  parentId: ID!
+  children: [Clause!]! @connection(keyName: "byParentId", fields: ["id"])
+}
