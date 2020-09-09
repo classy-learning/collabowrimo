@@ -15,4 +15,5 @@ type Clause
   id: ID!
   parentId: ID!
   children: [Clause!]! @connection(keyName: "byParentId", fields: ["id"])
+  text: String!
 }

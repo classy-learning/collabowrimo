@@ -10,11 +10,13 @@ export const onCreateClause = /* GraphQL */ `
         items {
           id
           parentId
+          text
           createdAt
           updatedAt
         }
         nextToken
       }
+      text
       createdAt
       updatedAt
     }
@@ -29,11 +31,13 @@ export const onUpdateClause = /* GraphQL */ `
         items {
           id
           parentId
+          text
           createdAt
           updatedAt
         }
         nextToken
       }
+      text
       createdAt
       updatedAt
     }
@@ -48,11 +52,13 @@ export const onDeleteClause = /* GraphQL */ `
         items {
           id
           parentId
+          text
           createdAt
           updatedAt
         }
         nextToken
       }
+      text
       createdAt
       updatedAt
     }
