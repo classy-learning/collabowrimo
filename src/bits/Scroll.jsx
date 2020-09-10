@@ -5,15 +5,17 @@ import React from "react";
 
 const Scroll = (props) => {
   return (
-    <Container text>
-      <Header as="h1" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
-        <Header.Content>
-          {props.title}
-          <Header.Subheader>{props.subtitle}</Header.Subheader>
-        </Header.Content>
-      </Header>
+    <div>
+      <Container text>
+        <Header as="h1" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <Header.Content>
+            {props.title}
+            <Header.Subheader>{props.subtitle}</Header.Subheader>
+          </Header.Content>
+        </Header>
+      </Container>
       {props.children}
-    </Container>
+    </div>
   );
 };
 

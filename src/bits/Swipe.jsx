@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { API } from "aws-amplify";
 import Clause from "bits/Clause";
+import NewClauseForm from "bits/NewClauseForm";
 import PropTypes from "prop-types";
+import SwipeView from "bits/SwipeView";
+import SwipeableViews from "react-swipeable-views";
 import { clausesByParentId } from "graphql/queries";
 
 const Swipe = (props) => {
@@ -17,8 +20,18 @@ const Swipe = (props) => {
     }
     fetchClauses(props.parentId);
   }, [props.parentId]);
-  // TODO: wrap clauses and newClauseForm in react-swipeable-views
-  return clauses.map((clause) => <Clause {...clause} key={clause.id}></Clause>);
+  return (
+    <SwipeableViews>
+      {clauses.map((clause) => (
+        <SwipeView key={clause.id}>
+          <Clause {...clause}></Clause>
+        </SwipeView>
+      ))}
+      <SwipeView>
+        <NewClauseForm></NewClauseForm>
+      </SwipeView>
+    </SwipeableViews>
+  );
 };
 
 Swipe.propTypes = {
