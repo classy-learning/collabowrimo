@@ -13,7 +13,14 @@ function App() {
         title="collabo&#183;wri&#183;mo"
       >
         {parentIds.map((parentId) => (
-          <Swipe key={parentId} parentId={parentId}></Swipe>
+          <Swipe
+            key={parentId}
+            onSelectionChanged={() => {
+              // TODO: update parentIds
+              console.log("slide index changed");
+            }}
+            parentId={parentId}
+          ></Swipe>
         ))}
       </Scroll>
     </AuthWrapper>

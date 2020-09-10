@@ -1,3 +1,5 @@
+# TODO: add clause flag type
+# TODO: override delete clause mutation to delete all descendents as well
 type Clause
   @auth(
     rules: [
