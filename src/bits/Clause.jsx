@@ -1,18 +1,36 @@
-import { Dimmer, Segment } from "semantic-ui-react";
+import { Button, Dimmer, Icon, Segment } from "semantic-ui-react";
+import React, { useEffect, useState } from "react";
 
 import Filter from "bad-words";
 import PropTypes from "prop-types";
-import React from "react";
 
 const filter = new Filter();
 
-// TODO: fix "catch" when swiping that appears to be caused by Dimmer
-// TODO: add "eye" button to reveal profane clause
 const Clause = (props) => {
-  const isTextProfane = () => filter.isProfane(props.text);
+  const [isProfane, setIsProfane] = useState();
+  const [userDidReveal, setUserDidReveal] = useState();
+
+  useEffect(() => {
+    setIsProfane(filter.isProfane(props.text));
+  }, [props.text]);
+
+  const isDimmed = isProfane && !userDidReveal;
+
   return (
-    <Dimmer.Dimmable as={Segment} raised blurring dimmed={isTextProfane()}>
-      <Dimmer active={isTextProfane()} inverted></Dimmer>
+    <Dimmer.Dimmable as={Segment} blurring dimmed={isDimmed} raised>
+      <Dimmer active={isDimmed} inverted>
+        <Button
+          secondary
+          icon
+          labelPosition="left"
+          onClick={() => {
+            setUserDidReveal(true);
+          }}
+        >
+          <Icon name="eye" />
+          Uncensor
+        </Button>
+      </Dimmer>
       <p>{props.text}</p>
     </Dimmer.Dimmable>
   );

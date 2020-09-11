@@ -1,3 +1,4 @@
+# TODO: add color field to clause
 # TODO: override delete clause mutation to delete all descendents as well
 type Clause
   @auth(
