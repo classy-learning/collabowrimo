@@ -15,9 +15,12 @@ function App() {
         {parentIds.map((parentId) => (
           <Swipe
             key={parentId}
-            onSelectionChanged={() => {
+            onSelectionChanged={(selectedClause) => {
+              // TODO: pass in new selection and old selection
+              // TODO: replace old selection in parentIds with new selection
+              // TODO: prune parentIds back to latest selection
               // TODO: update parentIds
-              console.log("slide index changed");
+              console.log(selectedClause);
             }}
             parentId={parentId}
           ></Swipe>

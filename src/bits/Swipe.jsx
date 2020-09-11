@@ -8,21 +8,35 @@ import SwipeView from "bits/SwipeView";
 import SwipeableViews from "react-swipeable-views";
 import { clausesByParentId } from "graphql/queries";
 
+// TODO: fix outdated SwipeableViews react code
 // TODO: make sure this works with a mouse and keyboard
 const Swipe = (props) => {
   const [clauses, setClauses] = useState([]);
+  const [selectedClause, setSelectedClause] = useState();
+
+  useEffect(() => {
+    props.onSelectionChanged(selectedClause);
+  }, [props, selectedClause]);
+
   useEffect(() => {
     async function fetchClauses(parentId) {
       const results = await API.graphql({
         query: clausesByParentId,
         variables: { parentId: parentId },
       });
-      setClauses(results.data.clausesByParentId.items);
+      const items = results.data.clausesByParentId.items;
+      setClauses(items);
+      setSelectedClause(items[0]);
     }
     fetchClauses(props.parentId);
   }, [props.parentId]);
+
   return (
-    <SwipeableViews>
+    <SwipeableViews
+      onChangeIndex={(newIndex, oldIndex, meta) => {
+        setSelectedClause(clauses[newIndex]);
+      }}
+    >
       {clauses.map((clause) => (
         <SwipeView key={clause.id}>
           <Clause {...clause}></Clause>
@@ -31,9 +45,8 @@ const Swipe = (props) => {
       <SwipeView>
         <NewClauseForm
           onClauseCreated={(clause) => {
-            // TODO: append clause to list of clauses with setClauses
-            // TODO: auto swipe to slide containing new clause
-            console.log(clause);
+            setClauses([...clauses, clause]);
+            setSelectedClause(clause);
           }}
           parentId={props.parentId}
         ></NewClauseForm>
@@ -42,7 +55,6 @@ const Swipe = (props) => {
   );
 };
 
-// TODO: call onSelectionChanged when slide index changes
 Swipe.propTypes = {
   onSelectionChanged: PropTypes.func.isRequired,
   parentId: PropTypes.string.isRequired,

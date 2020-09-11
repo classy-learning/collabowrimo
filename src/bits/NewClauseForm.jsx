@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { createClause } from "graphql/mutations";
 
 // TODO: add character limit to textarea; display current chars
+// TODO: fix obsolete react textarea code
 const NewClauseForm = (props) => {
   const [text, setText] = useState("");
   return (
