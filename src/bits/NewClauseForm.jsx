@@ -1,4 +1,4 @@
-import { Button, Form, TextArea } from "semantic-ui-react";
+import { Button, Form, Label, TextArea } from "semantic-ui-react";
 import React, { useState } from "react";
 
 import { API } from "aws-amplify";
@@ -6,17 +6,20 @@ import PropTypes from "prop-types";
 import { createClause } from "graphql/mutations";
 
 // TODO: add character limit to textarea; display current chars
-// TODO: add color "bubbles" below textarea so that users can pick a clause color
 // TODO: fix obsolete react textarea code
 const NewClauseForm = (props) => {
   const [text, setText] = useState("");
+  const [activeColor, setActiveColor] = useState("white");
+
   return (
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
         const result = await API.graphql({
           query: createClause,
-          variables: { input: { parentId: props.parentId, text: text } },
+          variables: {
+            input: { color: activeColor, parentId: props.parentId, text: text },
+          },
         });
         props.onClauseCreated(result.data.createClause);
         setText("");
@@ -29,7 +32,37 @@ const NewClauseForm = (props) => {
           value={text}
         />
       </Form.Field>
-      <Button type="submit" disabled={!text}>
+      <Form.Field>
+        <Label.Group circular size="mini">
+          {[
+            "red",
+            "orange",
+            "yellow",
+            "olive",
+            "green",
+            "teal",
+            "blue",
+            "violet",
+            "purple",
+            "pink",
+            "brown",
+            "grey",
+            "black",
+            "white",
+          ].map((color) => (
+            <Label
+              basic={color !== activeColor}
+              as={Button}
+              color={color}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveColor(color);
+              }}
+            ></Label>
+          ))}
+        </Label.Group>
+      </Form.Field>
+      <Button disabled={!text} secondary type="submit">
         Submit
       </Button>
     </Form>

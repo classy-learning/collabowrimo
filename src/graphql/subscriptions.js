@@ -11,12 +11,14 @@ export const onCreateClause = /* GraphQL */ `
           id
           parentId
           text
+          color
           createdAt
           updatedAt
         }
         nextToken
       }
       text
+      color
       createdAt
       updatedAt
     }
@@ -32,12 +34,14 @@ export const onUpdateClause = /* GraphQL */ `
           id
           parentId
           text
+          color
           createdAt
           updatedAt
         }
         nextToken
       }
       text
+      color
       createdAt
       updatedAt
     }
@@ -53,12 +57,14 @@ export const onDeleteClause = /* GraphQL */ `
           id
           parentId
           text
+          color
           createdAt
           updatedAt
         }
         nextToken
       }
       text
+      color
       createdAt
       updatedAt
     }

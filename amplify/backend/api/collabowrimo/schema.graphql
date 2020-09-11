@@ -1,4 +1,3 @@
-# TODO: add color field to clause
 # TODO: override delete clause mutation to delete all descendents as well
 type Clause
   @auth(
@@ -18,4 +17,5 @@ type Clause
   parentId: ID!
   children: [Clause!]! @connection(keyName: "byParentId", fields: ["id"])
   text: String!
+  color: String!
 }

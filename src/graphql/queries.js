@@ -11,12 +11,14 @@ export const getClause = /* GraphQL */ `
           id
           parentId
           text
+          color
           createdAt
           updatedAt
         }
         nextToken
       }
       text
+      color
       createdAt
       updatedAt
     }
@@ -36,6 +38,7 @@ export const listClauses = /* GraphQL */ `
           nextToken
         }
         text
+        color
         createdAt
         updatedAt
       }
@@ -65,6 +68,7 @@ export const clausesByParentId = /* GraphQL */ `
           nextToken
         }
         text
+        color
         createdAt
         updatedAt
       }
