@@ -1,9 +1,21 @@
+import { Dimmer, Segment } from "semantic-ui-react";
+
+import Filter from "bad-words";
 import PropTypes from "prop-types";
 import React from "react";
 
-// TODO: blur posts with bad words
+const filter = new Filter();
+
+// TODO: fix "catch" when swiping that appears to be caused by Dimmer
+// TODO: add "eye" button to reveal profane clause
 const Clause = (props) => {
-  return <p>{props.text}</p>;
+  const isTextProfane = () => filter.isProfane(props.text);
+  return (
+    <Dimmer.Dimmable as={Segment} raised blurring dimmed={isTextProfane()}>
+      <Dimmer active={isTextProfane()} inverted></Dimmer>
+      <p>{props.text}</p>
+    </Dimmer.Dimmable>
+  );
 };
 
 Clause.propTypes = {
