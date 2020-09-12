@@ -6,6 +6,25 @@ import Swipe from "bits/Swipe";
 
 function App() {
   const [parentIds, setParentIds] = useState(["ROOT"]);
+
+  const onSwipeSelectionChanged = (newSelection, oldSelection) => {
+    if (newSelection) {
+      if (oldSelection === null) {
+        console.log("nothing -> clause");
+      } else if (oldSelection === undefined) {
+        console.log("form -> clause");
+      } else if (oldSelection) {
+        console.log("clause -> clause");
+      } else {
+        console.log("wtf");
+      }
+    } else if (oldSelection) {
+      console.log("clause -> form");
+    } else {
+      console.log("wtf");
+    }
+  };
+
   return (
     <AuthWrapper>
       <Scroll
@@ -15,13 +34,7 @@ function App() {
         {parentIds.map((parentId) => (
           <Swipe
             key={parentId}
-            onSelectionChanged={(selectedClause) => {
-              // TODO: pass in new selection and old selection
-              // TODO: replace old selection in parentIds with new selection
-              // TODO: prune parentIds back to latest selection
-              // TODO: update parentIds
-              console.log(selectedClause);
-            }}
+            onSelectionChanged={onSwipeSelectionChanged}
             parentId={parentId}
           ></Swipe>
         ))}

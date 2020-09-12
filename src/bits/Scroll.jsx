@@ -3,6 +3,7 @@ import { Container, Header } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import React from "react";
 
+// TODO: customize header font
 const Scroll = (props) => {
   return (
     <div>

@@ -28,7 +28,7 @@ const NewClauseForm = (props) => {
       <Form.Field>
         <TextArea
           onChange={(e) => setText(e.target.value)}
-          placeholder="Add your own version..."
+          placeholder="Write here..."
           value={text}
         />
       </Form.Field>
@@ -51,9 +51,10 @@ const NewClauseForm = (props) => {
             "white",
           ].map((color) => (
             <Label
-              basic={color !== activeColor}
               as={Button}
+              basic={color !== activeColor}
               color={color}
+              key={color}
               onClick={(e) => {
                 e.preventDefault();
                 setActiveColor(color);
