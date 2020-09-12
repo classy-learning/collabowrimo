@@ -8,20 +8,43 @@ function App() {
   const [parentIds, setParentIds] = useState(["ROOT"]);
 
   const onSwipeSelectionChanged = (newSelection, oldSelection) => {
+    const ids = [...parentIds];
+
+    // TODO: refactor this conditional statement to be... prettier
     if (newSelection) {
       if (oldSelection === null) {
-        console.log("nothing -> clause");
+        // nothing -> clause
+        ids.push(newSelection.id);
       } else if (oldSelection === undefined) {
-        console.log("form -> clause");
+        // form -> clause
+        ids.push(newSelection.id);
       } else if (oldSelection) {
-        console.log("clause -> clause");
+        // clause -> clause
+        ids.length = ids.indexOf(oldSelection.id);
+        ids.push(newSelection.id);
       } else {
         console.log("wtf");
       }
     } else if (oldSelection) {
-      console.log("clause -> form");
+      // clause -> form
+      ids.length = ids.indexOf(oldSelection.id);
+    } else if (newSelection === undefined) {
+      if (oldSelection === undefined) {
+        // form -> nothing
+      } else if (oldSelection === null) {
+        // nothing -> form
+      } else {
+        console.log("wtf");
+      }
     } else {
       console.log("wtf");
+    }
+
+    if (
+      ids.length !== parentIds.length ||
+      ids[ids.length - 1] !== parentIds[parentIds.length - 1]
+    ) {
+      setParentIds(ids);
     }
   };
 

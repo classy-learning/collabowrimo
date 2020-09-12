@@ -9,6 +9,7 @@ import SwipeableViews from "react-swipeable-views";
 import { clausesByParentId } from "graphql/queries";
 import usePrevious from "bits/usePrevious";
 
+// TODO: implement SUIR fade in/out transitions
 // TODO: fix outdated SwipeableViews react code
 // TODO: make sure this works with a mouse and keyboard
 const Swipe = (props) => {
@@ -18,6 +19,13 @@ const Swipe = (props) => {
 
   useEffect(() => {
     if (selectedClause !== null) {
+      if (
+        selectedClause &&
+        previousSelectedClause &&
+        selectedClause.id === previousSelectedClause.id
+      ) {
+        return;
+      }
       props.onSelectionChanged(selectedClause, previousSelectedClause);
     }
   }, [previousSelectedClause, props, selectedClause]);

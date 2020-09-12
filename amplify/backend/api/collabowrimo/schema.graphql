@@ -1,4 +1,5 @@
 # TODO: override delete clause mutation to delete all descendents as well
+# TODO: enforce character limit for text field
 type Clause
   @auth(
     rules: [

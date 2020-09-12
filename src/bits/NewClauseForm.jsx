@@ -5,6 +5,7 @@ import { API } from "aws-amplify";
 import PropTypes from "prop-types";
 import { createClause } from "graphql/mutations";
 
+// TODO: fix blurry button
 // TODO: add character limit to textarea; display current chars
 // TODO: fix obsolete react textarea code
 const NewClauseForm = (props) => {
